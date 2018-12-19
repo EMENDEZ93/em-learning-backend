@@ -21,6 +21,8 @@ public interface ReloadVerbInTableService {
 
 	public void reloadPresentVerbInTable() throws InvalidFormatException, IOException;
 
+	public void reloadPastVerbInTable() throws InvalidFormatException, IOException;
+	
 	public default List<String> getAllverbForTime(int time) throws InvalidFormatException, IOException {
 		OPCPackage file = OPCPackage
 				.open(new File(Paths.get("").toAbsolutePath().toString() + ExcelEnglishFileConstant.VERB_FILE));

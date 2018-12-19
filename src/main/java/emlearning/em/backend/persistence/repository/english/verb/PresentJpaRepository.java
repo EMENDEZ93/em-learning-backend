@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import emlearning.em.backend.persistence.entity.english.verb.PresentEntity;
 
 @Repository
-public interface VerbJpaRepository extends JpaRepository<PresentEntity, Serializable> {
+public interface PresentJpaRepository extends JpaRepository<PresentEntity, Serializable> {
 
 	public abstract boolean existsByVerb(String verb);
 	
