@@ -11,7 +11,8 @@ import emlearning.em.backend.domain.service.english.practice.present.PresentPrac
 @RequestMapping("api/practice")
 public class PresentPracticeController {
 
-	@Autowired PresentPracticeService presentPracticeService;
+	@Autowired 
+	private PresentPracticeService presentPracticeService;
 	
 	@GetMapping("/present") 
 	public String getPresentPracite() {
