@@ -1,21 +1,22 @@
-package emlearning.em.backend.controller.english.practice.present;
+package emlearning.em.backend.controller.english.practice.past;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import emlearning.em.backend.domain.service.english.practice.present.PresentPracticeService;
+import emlearning.em.backend.domain.service.english.practice.past.PastPracticeService;
 
 @RestController
 @RequestMapping("api/practice")
-public class PresentPracticeController {
+public class PastPracticeController {
 
-	@Autowired PresentPracticeService presentPracticeService;
+	@Autowired
+	private PastPracticeService pastPracticeService;
 	
-	@GetMapping("/present") 
+	@GetMapping("/past") 
 	public String getPresentPracite() {
-		return presentPracticeService.getPresent(); 
+		return pastPracticeService.getVerb();
 	}
 	
 }
