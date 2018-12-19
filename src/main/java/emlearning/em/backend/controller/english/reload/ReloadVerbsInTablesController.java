@@ -1,22 +1,29 @@
-package emlearning.em.backend.controller.english.verb;
+package emlearning.em.backend.controller.english.reload;
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import emlearning.em.backend.domain.service.english.verb.ReloadVerbInTableService;
+import emlearning.em.backend.domain.service.english.reload.ReloadVerbInTableService;
 
 import java.io.IOException;
 
 @RestController
+@RequestMapping("api/reload/")
 public class ReloadVerbsInTablesController {
 
 	@Autowired
 	private ReloadVerbInTableService reloadVerb;
 
-	@GetMapping("/present")
-	public void getPresentVerb() throws IOException, InvalidFormatException {
+	@GetMapping("/index")
+	public String index() {
+		return "em-learning";
+	}	
+	
+	@GetMapping("/all/verb")
+	public void reloadAllVerb() throws IOException, InvalidFormatException {
 		reloadVerb.reloadAllVerb();
 	}
 
