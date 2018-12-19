@@ -28,7 +28,19 @@ public class PresentEntity implements Serializable {
 		learned = false;
 	}
 
-	public PresentEntity(String verb) {
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getVerb() {
+		return verb;
+	}
+
+	public void setVerb(String verb) {
 		this.verb = verb;
 	}
 
@@ -38,14 +50,6 @@ public class PresentEntity implements Serializable {
 
 	public void setLearned(boolean learned) {
 		this.learned = learned;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public String getVerb() {
-		return verb;
 	}
 
 }

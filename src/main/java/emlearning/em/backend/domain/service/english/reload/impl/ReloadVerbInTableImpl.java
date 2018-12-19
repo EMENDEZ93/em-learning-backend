@@ -26,7 +26,9 @@ public class ReloadVerbInTableImpl implements ReloadVerbInTableService {
 	public void reloadPresentVerbInTable() throws InvalidFormatException, IOException {
 		getAllverbForTime(VerbConstant.presentTime).stream().forEach(verb -> {
 			if( !verbJpaRepository.existsByVerb(verb) ) {
-				verbJpaRepository.save(new PresentEntity(verb) );	
+				PresentEntity newVerb = new PresentEntity();
+				newVerb.setVerb(verb);
+				verbJpaRepository.save( newVerb );	
 			}
 		});		
 	}
