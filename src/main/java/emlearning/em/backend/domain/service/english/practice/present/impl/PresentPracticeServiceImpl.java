@@ -18,4 +18,9 @@ public class PresentPracticeServiceImpl implements PresentPracticeService {
 		return presentJpaRepository.getRandomLearnVerb();
 	}
 
+	@Override
+	public void getPresentLearned(Long id) {
+		presentJpaRepository.getPresentLearned(id);
+	}
+
 }
