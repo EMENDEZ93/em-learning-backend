@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 
 @Entity
@@ -19,6 +20,13 @@ public class PastParticipleEntity implements Serializable {
 	private Long id;
 
 	private String verb;
+
+	private boolean learned;
+
+	@PrePersist
+	public void prePersist() {
+		learned = false;
+	}
 
 	public Long getId() {
 		return id;
@@ -34,6 +42,14 @@ public class PastParticipleEntity implements Serializable {
 
 	public void setVerb(String verb) {
 		this.verb = verb;
+	}
+
+	public boolean isLearned() {
+		return learned;
+	}
+
+	public void setLearned(boolean learned) {
+		this.learned = learned;
 	}
 
 }
