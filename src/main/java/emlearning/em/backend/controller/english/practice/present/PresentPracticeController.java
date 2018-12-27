@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import emlearning.em.backend.domain.service.english.practice.present.PresentPracticeService;
+import emlearning.em.backend.persistence.entity.english.verb.PresentEntity;
 
 @RestController
 @RequestMapping("api/practice")
@@ -15,8 +16,8 @@ public class PresentPracticeController {
 	private PresentPracticeService presentPracticeService;
 	
 	@GetMapping("/present") 
-	public String getPresentPracite() {
-		return presentPracticeService.getPresent(); 
-	}
+	public PresentEntity getRandomLearnVerb() {
+		return presentPracticeService.getRandomLearnVerb(); 
+	}	
 	
 }

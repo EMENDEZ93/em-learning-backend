@@ -1,7 +1,9 @@
 package emlearning.em.backend.domain.service.english.practice.present;
 
+import emlearning.em.backend.persistence.entity.english.verb.PresentEntity;
+
 public interface PresentPracticeService {
 
-	public String getPresent();
+	public PresentEntity getRandomLearnVerb();
 	
 }

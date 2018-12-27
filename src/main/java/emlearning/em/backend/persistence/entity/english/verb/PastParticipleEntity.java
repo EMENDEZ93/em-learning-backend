@@ -35,4 +35,5 @@ public class PastParticipleEntity implements Serializable {
 	public void setVerb(String verb) {
 		this.verb = verb;
 	}
+
 }

@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 
@@ -23,6 +25,12 @@ public class PresentEntity implements Serializable {
 
 	private boolean learned;
 
+	@OneToOne
+	private PastEntity past;
+	
+	@OneToOne
+	private PastParticipleEntity pastPartiple; 
+	
 	@PrePersist
 	public void prePersist() {
 		learned = false;
@@ -50,6 +58,22 @@ public class PresentEntity implements Serializable {
 
 	public void setLearned(boolean learned) {
 		this.learned = learned;
+	}
+
+	public PastEntity getPast() {
+		return past;
+	}
+
+	public void setPast(PastEntity past) {
+		this.past = past;
+	}
+
+	public PastParticipleEntity getPastPartiple() {
+		return pastPartiple;
+	}
+
+	public void setPastPartiple(PastParticipleEntity pastPartiple) {
+		this.pastPartiple = pastPartiple;
 	}
 
 }

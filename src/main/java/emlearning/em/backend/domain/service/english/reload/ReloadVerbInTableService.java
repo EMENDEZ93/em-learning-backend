@@ -14,6 +14,9 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import emlearning.em.backend.domain.constant.english.ExcelEnglishFileConstant;
+import emlearning.em.backend.domain.dto.english.verb.VerbDto;
+import emlearning.em.backend.persistence.entity.english.verb.PastEntity;
+import emlearning.em.backend.persistence.entity.english.verb.PastParticipleEntity;
 
 public interface ReloadVerbInTableService {
 
@@ -21,11 +24,11 @@ public interface ReloadVerbInTableService {
 
 	public void reloadPresentVerbInTable() throws InvalidFormatException, IOException;
 
-	public void reloadPastVerbInTable() throws InvalidFormatException, IOException;
-	
-	public void reloadPastParticipleVerbInTable() throws InvalidFormatException, IOException;
-	
-	public default List<String> getAllverbForTime(int time) throws InvalidFormatException, IOException {
+	public PastEntity reloadPastVerbInTable(String pastVerb) throws InvalidFormatException, IOException;
+
+	public PastParticipleEntity reloadPastParticipleVerbInTable(String pastParticipleVerb) throws InvalidFormatException, IOException;
+
+	public default List<VerbDto> getAllverbForTime(int time) throws InvalidFormatException, IOException {
 		OPCPackage file = OPCPackage
 				.open(new File(Paths.get("").toAbsolutePath().toString() + ExcelEnglishFileConstant.VERB_FILE));
 
@@ -34,11 +37,18 @@ public interface ReloadVerbInTableService {
 		Iterator<Row> rowIterator = sheet.iterator();
 
 		Row row;
-		List<String> allVerb = new ArrayList<>();
+		List<VerbDto> allVerb = new ArrayList<>();
 
 		while (rowIterator.hasNext()) {
 			row = rowIterator.next();
-			allVerb.add(row.getCell(time).toString());
+
+			VerbDto verb = new VerbDto();
+			verb.setPresent(row.getCell(0).toString());
+			verb.setPast(row.getCell(1).toString());
+			verb.setPastParticiple(row.getCell(2).toString());
+
+			allVerb.add(verb);
+
 		}
 
 		return allVerb;
