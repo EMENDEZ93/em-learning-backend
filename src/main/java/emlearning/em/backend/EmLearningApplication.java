@@ -8,12 +8,16 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import emlearning.em.backend.domain.service.english.reload.ReloadVerbInTableService;
+import emlearning.em.backend.domain.service.english.setting.SettingEnglish;
 
 @SpringBootApplication
 public class EmLearningApplication implements CommandLineRunner {
 
 	@Autowired
 	private ReloadVerbInTableService reloadVerb;
+	
+	@Autowired
+	private SettingEnglish settingEnglish;
 	
 	private static final Logger log = LoggerFactory.getLogger(EmLearningApplication.class);
 	
@@ -25,5 +29,11 @@ public class EmLearningApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		reloadVerb.reloadAllVerb();
 		log.info("*** reload all verb ***");
+		
+		settingEnglish.defaultTest();
+		log.info("*** default setting english learned test ***");
+
 	}
+	
+	
 }

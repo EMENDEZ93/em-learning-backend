@@ -19,7 +19,7 @@ public class PresentPracticeServiceImpl implements PresentPracticeService {
 	}
 
 	@Override
-	public void getPresentLearned(Long id) {
+	public void getChangePresentLearned(Long id) {
 		presentJpaRepository.getPresentLearned(id);
 	}
 

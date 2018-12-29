@@ -6,6 +6,6 @@ public interface PresentPracticeService {
 
 	public PresentEntity getRandomLearnVerb();
 	
-	public void getPresentLearned(Long id);
+	public void getChangePresentLearned(Long id);
 	
 }
