@@ -15,6 +15,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import emlearning.em.backend.domain.constant.english.ExcelEnglishFileConstant;
 import emlearning.em.backend.domain.dto.english.verb.VerbDto;
+import emlearning.em.backend.persistence.entity.english.verb.ExampleVerbEntity;
 import emlearning.em.backend.persistence.entity.english.verb.PastEntity;
 import emlearning.em.backend.persistence.entity.english.verb.PastParticipleEntity;
 
@@ -26,14 +27,17 @@ public interface ReloadVerbInTableService {
 
 	public PastEntity reloadPastVerbInTable(String pastVerb) throws InvalidFormatException, IOException;
 
-	public PastParticipleEntity reloadPastParticipleVerbInTable(String pastParticipleVerb) throws InvalidFormatException, IOException;
+	public PastParticipleEntity reloadPastParticipleVerbInTable(String pastParticipleVerb)
+			throws InvalidFormatException, IOException;
+
+	public void reloadAllExampleVerb() throws IOException, InvalidFormatException;
 
 	public default List<VerbDto> getAllverbForTime(int time) throws InvalidFormatException, IOException {
 		OPCPackage file = OPCPackage
 				.open(new File(Paths.get("").toAbsolutePath().toString() + ExcelEnglishFileConstant.VERB_FILE));
 
 		XSSFWorkbook excel = new XSSFWorkbook(file);
-		XSSFSheet sheet = excel.getSheetAt(0);
+		XSSFSheet sheet = excel.getSheetAt(ExcelEnglishFileConstant.VERB_SHEET);
 		Iterator<Row> rowIterator = sheet.iterator();
 
 		Row row;
@@ -52,6 +56,41 @@ public interface ReloadVerbInTableService {
 		}
 
 		return allVerb;
+	}
+
+	public default List<ExampleVerbEntity> getAllExampleVerb() throws InvalidFormatException, IOException {
+		OPCPackage file = OPCPackage
+				.open(new File(Paths.get("").toAbsolutePath().toString() + ExcelEnglishFileConstant.VERB_FILE));
+
+		XSSFWorkbook excel = new XSSFWorkbook(file);
+		XSSFSheet sheet = excel.getSheetAt(ExcelEnglishFileConstant.EXAMPLE_VERB_SHEET);
+		Iterator<Row> rowIterator = sheet.iterator();
+
+		Row row;
+		List<ExampleVerbEntity> allExample = new ArrayList<>();
+
+		try {
+
+			while (rowIterator.hasNext()) {
+				row = rowIterator.next();
+				if (!row.getCell(1).toString().contains("***")) {
+
+					ExampleVerbEntity example = new ExampleVerbEntity();
+					example.setSentence(row.getCell(1).toString());
+					example.setHelp(row.getCell(0).toString());
+					example.setVerb(row.getCell(2).toString());
+					example.setAuxiliaryId(row.getCell(3).toString());
+
+					allExample.add(example);
+
+				}
+
+			}
+
+		} catch (NullPointerException e) {
+		}
+
+		return allExample;
 	}
 
 }

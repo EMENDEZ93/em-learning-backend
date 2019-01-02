@@ -33,6 +33,8 @@ public class EmLearningApplication implements CommandLineRunner {
 		settingEnglish.defaultTest();
 		log.info("*** default setting english learned test ***");
 
+		reloadVerb.reloadAllExampleVerb();
+		log.info("*** reload all example verb ***");
 	}
 	
 	

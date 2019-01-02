@@ -1,12 +1,16 @@
 package emlearning.em.backend.persistence.entity.english.verb;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
@@ -25,12 +29,15 @@ public class PresentEntity implements Serializable {
 
 	private boolean learned;
 
+	@OneToMany(fetch=FetchType.LAZY)
+	private List<ExampleVerbEntity> examples;
+
 	@OneToOne
 	private PastEntity past;
-	
+
 	@OneToOne
-	private PastParticipleEntity pastPartiple; 
-	
+	private PastParticipleEntity pastPartiple;
+
 	@PrePersist
 	public void prePersist() {
 		learned = false;
@@ -74,6 +81,14 @@ public class PresentEntity implements Serializable {
 
 	public void setPastPartiple(PastParticipleEntity pastPartiple) {
 		this.pastPartiple = pastPartiple;
+	}
+
+	public List<ExampleVerbEntity> getExamples() {
+		return examples;
+	}
+
+	public void setExample(ExampleVerbEntity example) {
+		this.examples.add(example);
 	}
 
 }

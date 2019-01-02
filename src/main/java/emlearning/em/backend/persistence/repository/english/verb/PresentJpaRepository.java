@@ -23,4 +23,6 @@ public interface PresentJpaRepository extends JpaRepository<PresentEntity, Seria
 	@Modifying
 	@Query("update PresentEntity set learned = true where id = ?1")
 	public void getPresentLearned(@Param("id") Long id);
+	
+	public abstract PresentEntity findByVerb(String verb);
 }
