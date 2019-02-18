@@ -21,6 +21,6 @@ public class PresentExampleVerbController {
 	@GetMapping("/{verb}")
 	public ExampleVerbEntity getRandomExampleVerb(@PathVariable(value="verb") String verb) {
 		return presentExampleVerbPracticeService.getRandomExampleVerb(verb);
-	}
+	} 
 	
 }
