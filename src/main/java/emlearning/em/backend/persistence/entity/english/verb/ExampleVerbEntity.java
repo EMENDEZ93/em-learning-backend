@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 
 @Entity
@@ -25,6 +26,21 @@ public class ExampleVerbEntity implements Serializable {
 	private String help;
 
 	private String verb;
+
+	private boolean learned;
+
+	public boolean isLearned() {
+		return learned;
+	}
+
+	public void setLearned(boolean learned) {
+		this.learned = learned;
+	}
+
+	@PrePersist
+	public void prePersist() {
+		learned = false;
+	}
 
 	public Long getId() {
 		return id;

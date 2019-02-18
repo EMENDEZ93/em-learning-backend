@@ -42,17 +42,10 @@ public class ReloadVerbInTableImpl implements ReloadVerbInTableService {
 		getAllverbForTime(VerbConstant.presentTime).stream().forEach(verbDto -> {
 			if (!presentJpaRepository.existsByVerb(verbDto.getPresent())) {
 
-				try {
 					PresentEntity newVerb = new PresentEntity();
 					newVerb.setVerb(verbDto.getPresent());
-					newVerb.setPast(reloadPastVerbInTable(verbDto.getPast()));
-					newVerb.setPastPartiple(reloadPastParticipleVerbInTable(verbDto.getPastParticiple()));
 					presentJpaRepository.save(newVerb);
-
-				} catch (InvalidFormatException | IOException e) {
-					e.printStackTrace();
-				}
-
+					
 			}
 		});
 	}
@@ -80,9 +73,7 @@ public class ReloadVerbInTableImpl implements ReloadVerbInTableService {
 			if (!exampleVerbJpaRepository.existsByAuxiliaryId(example.getAuxiliaryId())) {
 
 				if (presentJpaRepository.existsByVerb(example.getVerb())) {
-					PresentEntity verb = presentJpaRepository.findByVerb(example.getVerb());
-					verb.setExample(exampleVerbJpaRepository.save(example));
-					presentJpaRepository.save(verb);
+					exampleVerbJpaRepository.save(example);
 				}
 
 			}
