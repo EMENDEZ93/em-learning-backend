@@ -22,5 +22,10 @@ public class PresentExampleVerbController {
 	public ExampleVerbEntity getRandomExampleVerb(@PathVariable(value="verb") String verb) {
 		return presentExampleVerbPracticeService.getRandomExampleVerb(verb);
 	} 
+
+	@GetMapping("/learned/{auxiliaryId}")
+	public void getChangePresentExampleVerbLearned(@PathVariable("auxiliaryId") String auxiliaryId) {
+		presentExampleVerbPracticeService.getChangePresentExampleVerbLearned(auxiliaryId);
+	}
 	
 }

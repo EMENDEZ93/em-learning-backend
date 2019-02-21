@@ -3,9 +3,11 @@ package emlearning.em.backend.persistence.repository.english.verb;
 import java.io.Serializable;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import emlearning.em.backend.persistence.entity.english.verb.ExampleVerbEntity;
 
@@ -16,5 +18,10 @@ public interface ExampleVerbJpaRepository extends JpaRepository<ExampleVerbEntit
 	public ExampleVerbEntity getRandomExampleVerb(@Param("verb") String placa);
 	
 	public abstract boolean existsByAuxiliaryId(String verb);
+
+	@Transactional
+	@Modifying
+	@Query("update ExampleVerbEntity set learned = true where auxiliaryId = ?1")
+	public void getChangePresentExampleVerbLearned(@Param("auxiliaryId") String auxiliaryId);
 	
 }

@@ -18,4 +18,9 @@ public class PresentExampleVerbPracticeServiceImpl implements PresentExampleVerb
 		return exampleVerbJpaRepository.getRandomExampleVerb(verb);
 	}
 
+	@Override
+	public void getChangePresentExampleVerbLearned(String auxiliaryId) {
+		exampleVerbJpaRepository.getChangePresentExampleVerbLearned(auxiliaryId);
+	}
+
 }
