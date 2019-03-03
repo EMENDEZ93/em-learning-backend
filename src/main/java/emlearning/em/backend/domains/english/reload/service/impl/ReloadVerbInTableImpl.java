@@ -1,4 +1,4 @@
-package emlearning.em.backend.domain.service.english.reload.impl;
+package emlearning.em.backend.domains.english.reload.service.impl;
 
 import java.io.IOException;
 
@@ -7,15 +7,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import emlearning.em.backend.domain.constant.english.verb.VerbConstant;
-import emlearning.em.backend.domain.service.english.reload.ReloadVerbInTableService;
-import emlearning.em.backend.persistence.entity.english.verb.PastEntity;
-import emlearning.em.backend.persistence.entity.english.verb.PastParticipleEntity;
-import emlearning.em.backend.persistence.entity.english.verb.PresentEntity;
-import emlearning.em.backend.persistence.repository.english.verb.ExampleVerbJpaRepository;
-import emlearning.em.backend.persistence.repository.english.verb.PastJpaRepository;
-import emlearning.em.backend.persistence.repository.english.verb.PastParticipleJpaRepository;
-import emlearning.em.backend.persistence.repository.english.verb.PresentJpaRepository;
+import emlearning.em.backend.domains.english.constant.verb.VerbConstant;
+import emlearning.em.backend.domains.english.practice.example.entity.repository.ExampleVerbJpaRepository;
+import emlearning.em.backend.domains.english.practice.past.entity.PastEntity;
+import emlearning.em.backend.domains.english.practice.past.repository.PastJpaRepository;
+import emlearning.em.backend.domains.english.practice.pastparticiple.entity.PastParticipleEntity;
+import emlearning.em.backend.domains.english.practice.pastparticiple.repository.PastParticipleJpaRepository;
+import emlearning.em.backend.domains.english.practice.present.entity.PresentEntity;
+import emlearning.em.backend.domains.english.practice.present.repository.PresentJpaRepository;
+import emlearning.em.backend.domains.english.reload.service.ReloadVerbInTableService;
 
 @Service
 public class ReloadVerbInTableImpl implements ReloadVerbInTableService {

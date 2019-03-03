@@ -1,10 +1,10 @@
-package emlearning.em.backend.domain.service.english.practice.pastparticiple.impl;
+package emlearning.em.backend.domains.english.practice.pastparticiple.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import emlearning.em.backend.domain.service.english.practice.pastparticiple.PastParticipleService;
-import emlearning.em.backend.persistence.repository.english.verb.PastParticipleJpaRepository;
+import emlearning.em.backend.domains.english.practice.pastparticiple.repository.PastParticipleJpaRepository;
+import emlearning.em.backend.domains.english.practice.pastparticiple.service.PastParticipleService;
 
 @Service
 public class PastParticiplePracticeServiceImpl implements PastParticipleService {

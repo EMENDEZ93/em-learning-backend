@@ -1,11 +1,11 @@
-package emlearning.em.backend.domain.service.english.practice.present.impl;
+package emlearning.em.backend.domains.english.practice.present.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import emlearning.em.backend.domain.service.english.practice.present.PresentPracticeService;
-import emlearning.em.backend.persistence.entity.english.verb.PresentEntity;
-import emlearning.em.backend.persistence.repository.english.verb.PresentJpaRepository;
+import emlearning.em.backend.domains.english.practice.present.entity.PresentEntity;
+import emlearning.em.backend.domains.english.practice.present.repository.PresentJpaRepository;
+import emlearning.em.backend.domains.english.practice.present.service.PresentPracticeService;
 
 @Service
 public class PresentPracticeServiceImpl implements PresentPracticeService {
