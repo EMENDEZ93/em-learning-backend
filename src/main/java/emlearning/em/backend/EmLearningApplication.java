@@ -7,8 +7,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import emlearning.em.backend.domain.service.english.reload.ReloadVerbInTableService;
-import emlearning.em.backend.domain.service.english.setting.SettingEnglish;
+import emlearning.em.backend.domains.english.reload.service.ReloadVerbInTableService;
+import emlearning.em.backend.domains.english.setting.service.SettingEnglish;
 
 @SpringBootApplication
 public class EmLearningApplication implements CommandLineRunner {
