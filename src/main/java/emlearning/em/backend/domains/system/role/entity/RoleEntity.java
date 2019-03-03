@@ -1,4 +1,4 @@
-package emlearning.em.backend.domains.system.entity;
+package emlearning.em.backend.domains.system.role.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +11,8 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.NaturalId;
 
+import emlearning.em.backend.domains.system.role.constant.RoleNameConstant;
+
 @Entity
 @Table(name = "role")
 public class RoleEntity {
@@ -22,12 +24,12 @@ public class RoleEntity {
 	@Enumerated(EnumType.STRING)
 	@NaturalId
 	@Column(length = 60)
-	private RoleNameEntity name;
+	private RoleNameConstant name;
 
 	public RoleEntity() {
 	}
 
-	public RoleEntity(RoleNameEntity name) {
+	public RoleEntity(RoleNameConstant name) {
 		this.name = name;
 	}
 
@@ -39,11 +41,11 @@ public class RoleEntity {
 		this.id = id;
 	}
 
-	public RoleNameEntity getName() {
+	public RoleNameConstant getName() {
 		return name;
 	}
 
-	public void setName(RoleNameEntity name) {
+	public void setName(RoleNameConstant name) {
 		this.name = name;
 	}
 

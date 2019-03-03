@@ -1,4 +1,4 @@
-package emlearning.em.backend.domains.system.entity;
+package emlearning.em.backend.domains.system.user.entity;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -18,6 +18,8 @@ import javax.validation.constraints.Size;
 import javax.persistence.JoinColumn;
 
 import org.hibernate.annotations.NaturalId;
+
+import emlearning.em.backend.domains.system.role.entity.RoleEntity;
 
 @Entity
 @Table(name = "users", uniqueConstraints = { @UniqueConstraint(columnNames = { "username" }),
