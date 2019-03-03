@@ -24,4 +24,9 @@ public class SettingEnglishImpl implements SettingEnglish {
 		return settingEnglishJpaRepository.getRepeatToLearnedVerbNumber();
 	}
 
+	@Override
+	public int getRepeatToLearnedPresentExampleVerbNumber() {
+		return settingEnglishJpaRepository.getRepeatToLearnedPresentExampleVerbNumber();
+	}
+
 }

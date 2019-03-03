@@ -6,4 +6,6 @@ public interface SettingEnglish {
 	
 	public int getRepeatToLearnedVerbNumber();
 
+	public int getRepeatToLearnedPresentExampleVerbNumber();
+
 }

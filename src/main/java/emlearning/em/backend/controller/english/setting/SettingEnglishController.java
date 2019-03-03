@@ -21,4 +21,9 @@ public class SettingEnglishController {
 		return settingEnglish.getRepeatToLearnedVerbNumber();
 	}
 
+	@GetMapping("repeat/present/example/verb/learned")
+	public int getRepeatToLearnedPresentExampleVerbNumber() {
+		return settingEnglish.getRepeatToLearnedPresentExampleVerbNumber();
+	}	
+	
 }

@@ -23,17 +23,28 @@ public class SettingEnglishEntity implements Serializable {
 
 	private int repeatToLearnedVerb;
 
+	private int repeatToLearnedPresentExampleVerb;
+
 	@PrePersist
 	public void prePersist() {
 		repeatToLearnedVerb = SettingConstant.DEFAULT_REPETTIONS_TO_LEARNED_VERB;
+		repeatToLearnedPresentExampleVerb =SettingConstant.DEFAULT_REPETTIONS_TO_LEARNED_PRESENT_EXAMPLE_VERB; 
 	}
-	
+
 	public Long getId() {
 		return id;
 	}
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public int getRepeatToLearnedPresentExampleVerb() {
+		return repeatToLearnedPresentExampleVerb;
+	}
+
+	public void setRepeatToLearnedPresentExampleVerb(int repeatToLearnedPresentExampleVerb) {
+		this.repeatToLearnedPresentExampleVerb = repeatToLearnedPresentExampleVerb;
 	}
 
 	public int getRepeatToLearnedVerb() {
