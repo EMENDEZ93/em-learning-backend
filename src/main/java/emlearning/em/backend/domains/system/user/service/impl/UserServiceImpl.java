@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import emlearning.em.backend.application.command.system.signup.model.SignUpCommand;
+import emlearning.em.backend.application.system.signup.command.model.SignUpCommand;
 import emlearning.em.backend.domains.system.exception.SystemException;
 import emlearning.em.backend.domains.system.role.constant.RoleNameConstant;
 import emlearning.em.backend.domains.system.role.entity.RoleEntity;

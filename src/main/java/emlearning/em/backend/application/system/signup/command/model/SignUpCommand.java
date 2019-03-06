@@ -1,4 +1,4 @@
-package emlearning.em.backend.application.command.system.signup.model;
+package emlearning.em.backend.application.system.signup.command.model;
 
 import java.util.Set;
 
