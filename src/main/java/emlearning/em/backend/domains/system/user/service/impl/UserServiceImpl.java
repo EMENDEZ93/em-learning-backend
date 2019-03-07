@@ -4,9 +4,16 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import emlearning.em.backend.application.system.signin.command.model.LoginCommand;
 import emlearning.em.backend.application.system.signup.command.model.SignUpCommand;
 import emlearning.em.backend.domains.system.exception.SystemException;
 import emlearning.em.backend.domains.system.role.constant.RoleNameConstant;
@@ -15,6 +22,8 @@ import emlearning.em.backend.domains.system.role.repository.RoleEntityRepository
 import emlearning.em.backend.domains.system.user.entity.UserEntity;
 import emlearning.em.backend.domains.system.user.repository.UserEntityRepository;
 import emlearning.em.backend.domains.system.user.service.UserService;
+import emlearning.em.backend.infrastructure.config.security.jwt.JwtProvider;
+import emlearning.em.backend.infrastructure.config.security.message.JwtResponse;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -25,8 +34,14 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private RoleEntityRepository roleEntityRepository;
 
-	@Autowired(required=false)
-	//private PasswordEncoder encoder;
+	@Autowired(required = false)
+	AuthenticationManager authenticationManager;
+
+	@Autowired
+	JwtProvider jwtProvider;
+
+	@Autowired(required = false)
+	private PasswordEncoder encoder;
 
 	@Override
 	public void register(SignUpCommand signUpCommand) throws SystemException {
@@ -82,8 +97,20 @@ public class UserServiceImpl implements UserService {
 
 	private UserEntity buildUser(SignUpCommand signUpCommand) {
 		return new UserEntity(signUpCommand.getName(), signUpCommand.getUsername(), signUpCommand.getEmail(),
-				//encoder.encode(
-				signUpCommand.getPassword());
+				encoder.encode(signUpCommand.getPassword()));
+	}
+
+	public ResponseEntity<?> authenticate(LoginCommand loginCommand) {
+
+		Authentication authentication = authenticationManager.authenticate(
+				new UsernamePasswordAuthenticationToken(loginCommand.getUsername(), loginCommand.getPassword()));
+		
+		SecurityContextHolder.getContext().setAuthentication(authentication);
+		
+		String jwt = jwtProvider.generateJwtToken(authentication);
+		UserDetails userDetails = (UserDetails) authentication.getPrincipal(); 
+
+		return ResponseEntity.ok(new JwtResponse(jwt, userDetails.getUsername(), userDetails.getAuthorities()));
 	}
 
 }
