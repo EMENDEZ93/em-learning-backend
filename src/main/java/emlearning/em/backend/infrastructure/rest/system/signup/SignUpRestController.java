@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 import emlearning.em.backend.application.system.signup.command.SignUpEventHandler;
 import emlearning.em.backend.application.system.signup.command.model.SignUpCommand;
 import emlearning.em.backend.domains.system.exception.SystemException;
-import emlearning.em.backend.domains.system.user.service.UserService;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController

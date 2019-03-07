@@ -9,6 +9,10 @@ import emlearning.em.backend.domains.system.role.constant.RoleNameConstant;
 import emlearning.em.backend.domains.system.role.entity.RoleEntity;
 
 @Repository
-public interface RoleEntityRepository extends JpaRepository<RoleEntity,Long> {
+public interface RoleEntityRepository extends JpaRepository<RoleEntity, Long> {
+
 	public Optional<RoleEntity> findByName(RoleNameConstant roleName);
+
+	public abstract boolean existsByName(RoleNameConstant roleName);
+	
 }

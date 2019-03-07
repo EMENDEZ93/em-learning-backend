@@ -25,4 +25,5 @@ public interface PresentJpaRepository extends JpaRepository<PresentEntity, Seria
 	public void getPresentLearned(@Param("id") Long id);
 	
 	public abstract PresentEntity findByVerb(String verb);
+	
 }

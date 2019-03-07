@@ -9,6 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import emlearning.em.backend.domains.english.reload.service.ReloadVerbInTableService;
 import emlearning.em.backend.domains.english.setting.service.SettingEnglish;
+import emlearning.em.backend.domains.system.role.service.RoleService;
 
 @SpringBootApplication
 public class EmLearningApplication implements CommandLineRunner {
@@ -18,6 +19,9 @@ public class EmLearningApplication implements CommandLineRunner {
 	
 	@Autowired
 	private SettingEnglish settingEnglish;
+	
+	@Autowired
+	private RoleService roleService;
 	
 	private static final Logger log = LoggerFactory.getLogger(EmLearningApplication.class);
 	
@@ -35,6 +39,10 @@ public class EmLearningApplication implements CommandLineRunner {
 
 		reloadVerb.reloadAllExampleVerb();
 		log.info("*** reload all example verb ***");
+		
+		log.info("*** reload all roles ***");		
+		roleService.reloadAllRoles();
+		
 	}
 	
 	
