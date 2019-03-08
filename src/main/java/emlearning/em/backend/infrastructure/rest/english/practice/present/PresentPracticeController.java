@@ -18,9 +18,9 @@ public class PresentPracticeController {
 	@Autowired 
 	private PresentPracticeService presentPracticeService;
 	
-	@GetMapping("/present") 
-	public PresentEntity getRandomLearnVerb() {
-		return presentPracticeService.getRandomLearnVerb(); 
+	@GetMapping("/present/{username}") 
+	public PresentEntity getRandomLearnVerb(@PathVariable("username") String username) {
+		return presentPracticeService.getRandomLearnVerb(username); 
 	}	
 
 	@GetMapping("/present/learned/{id}")

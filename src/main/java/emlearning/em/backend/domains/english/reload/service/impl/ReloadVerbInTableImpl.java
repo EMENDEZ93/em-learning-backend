@@ -16,6 +16,7 @@ import emlearning.em.backend.domains.english.practice.pastparticiple.repository.
 import emlearning.em.backend.domains.english.practice.present.entity.PresentEntity;
 import emlearning.em.backend.domains.english.practice.present.repository.PresentJpaRepository;
 import emlearning.em.backend.domains.english.reload.service.ReloadVerbInTableService;
+import emlearning.em.backend.domains.system.user.repository.UserEntityRepository;
 
 @Service
 public class ReloadVerbInTableImpl implements ReloadVerbInTableService {
@@ -32,6 +33,9 @@ public class ReloadVerbInTableImpl implements ReloadVerbInTableService {
 	@Autowired
 	private ExampleVerbJpaRepository exampleVerbJpaRepository;
 
+	@Autowired
+	private UserEntityRepository userEntityRepository;
+
 	@Override
 	public void reloadAllVerb() throws IOException, InvalidFormatException {
 		reloadPresentVerbInTable();
@@ -39,15 +43,34 @@ public class ReloadVerbInTableImpl implements ReloadVerbInTableService {
 
 	@Override
 	public void reloadPresentVerbInTable() throws InvalidFormatException, IOException {
-		getAllverbForTime(VerbConstant.presentTime).stream().forEach(verbDto -> {
-			if (!presentJpaRepository.existsByVerb(verbDto.getPresent())) {
 
-					PresentEntity newVerb = new PresentEntity();
-					newVerb.setVerb(verbDto.getPresent());
-					presentJpaRepository.save(newVerb);
-					
+		userEntityRepository.findAll().forEach(user -> {
+
+			if (user.getId() != null) {
+
+				try {
+
+					getAllverbForTime(VerbConstant.presentTime).stream().forEach(verbDto -> {
+						if (!presentJpaRepository.existsByVerbAndUsername(verbDto.getPresent(), user.getUsername())) {
+
+							PresentEntity newVerb = new PresentEntity();
+							newVerb.setUsername(user.getUsername());
+							newVerb.setVerb(verbDto.getPresent());
+							presentJpaRepository.save(newVerb);
+
+						}
+					});
+
+				} catch (InvalidFormatException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+
 			}
+
 		});
+
 	}
 
 	@Override

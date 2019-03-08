@@ -14,8 +14,8 @@ public class PresentPracticeServiceImpl implements PresentPracticeService {
 	PresentJpaRepository presentJpaRepository;
 	
 	@Override
-	public PresentEntity getRandomLearnVerb() {
-		return presentJpaRepository.getRandomLearnVerb();
+	public PresentEntity getRandomLearnVerb(String username) {
+		return presentJpaRepository.getRandomLearnVerb(username);
 	}
 
 	@Override

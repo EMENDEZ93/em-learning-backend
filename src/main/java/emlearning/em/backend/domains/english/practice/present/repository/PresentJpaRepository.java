@@ -16,8 +16,11 @@ public interface PresentJpaRepository extends JpaRepository<PresentEntity, Seria
 
 	public abstract boolean existsByVerb(String verb);
 
-	@Query(value = "select * from present where learned = false order by rand() limit 1", nativeQuery = true)
-	public PresentEntity getRandomLearnVerb();
+	public abstract boolean existsByVerbAndUsername(String verb, String username);
+	
+	
+	@Query(value = "select * from present where learned = false and username=?1 order by rand() limit 1", nativeQuery = true)
+	public PresentEntity getRandomLearnVerb(@Param("username") String username);
 
 	@Transactional
 	@Modifying

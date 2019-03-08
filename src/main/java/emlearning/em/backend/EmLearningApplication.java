@@ -13,7 +13,7 @@ import emlearning.em.backend.domains.system.role.service.RoleService;
 
 @SpringBootApplication
 public class EmLearningApplication implements CommandLineRunner {
-
+	
 	@Autowired
 	private ReloadVerbInTableService reloadVerb;
 	

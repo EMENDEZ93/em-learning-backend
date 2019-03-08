@@ -4,7 +4,7 @@ import emlearning.em.backend.domains.english.practice.present.entity.PresentEnti
 
 public interface PresentPracticeService {
 
-	public PresentEntity getRandomLearnVerb();
+	public PresentEntity getRandomLearnVerb(String username);
 	
 	public void getChangePresentLearned(Long id);
 	
