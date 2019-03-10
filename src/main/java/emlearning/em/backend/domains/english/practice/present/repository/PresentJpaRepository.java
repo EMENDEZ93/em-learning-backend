@@ -18,7 +18,6 @@ public interface PresentJpaRepository extends JpaRepository<PresentEntity, Seria
 
 	public abstract boolean existsByVerbAndUsername(String verb, String username);
 	
-	
 	@Query(value = "select * from present where learned = false and username=?1 order by rand() limit 1", nativeQuery = true)
 	public PresentEntity getRandomLearnVerb(@Param("username") String username);
 
@@ -28,5 +27,8 @@ public interface PresentJpaRepository extends JpaRepository<PresentEntity, Seria
 	public void getPresentLearned(@Param("id") Long id);
 	
 	public abstract PresentEntity findByVerb(String verb);
+
+	@Query(value = "select * from present pre where pre.id not in (select rev.verb_id from present_review rev) having learned=true order by rand() limit 1;", nativeQuery = true)	
+	public PresentEntity getRandomReviewVerb(String username);
 	
 }
