@@ -23,5 +23,10 @@ public class PresentReviewService {
 		presentReviewJpaRepository.save(review);
 		
 	}
+
+	
+	public void resetReviewByUsername(String username) {
+		presentReviewJpaRepository.resetReviewByUsername(username);
+	}
 	
 }
