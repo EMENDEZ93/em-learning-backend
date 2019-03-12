@@ -28,7 +28,7 @@ public interface PresentJpaRepository extends JpaRepository<PresentEntity, Seria
 	
 	public abstract PresentEntity findByVerb(String verb);
 
-	@Query(value = "select * from present pre where pre.id not in (select rev.verb_id from present_review rev) having learned=true order by rand() limit 1;", nativeQuery = true)	
+	@Query(value = "select * from present pre where pre.id not in (select rev.verb_id from present_review rev) having learned=true and username=?1 order by rand() limit 1;", nativeQuery = true)	
 	public PresentEntity getRandomReviewVerb(String username);
 	
 }

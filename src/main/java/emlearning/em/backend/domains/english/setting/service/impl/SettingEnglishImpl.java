@@ -16,7 +16,13 @@ public class SettingEnglishImpl implements SettingEnglish {
 	@Override
 	public void defaultTest() {
 		SettingEnglishEntity setting = new SettingEnglishEntity();
-		settingEnglishJpaRepository.save(setting);
+
+		Long p = (long) 1;
+		
+		if(!settingEnglishJpaRepository.existsById(p)) {
+			settingEnglishJpaRepository.save(setting);			
+		}
+
 	}
 
 	@Override
@@ -27,6 +33,11 @@ public class SettingEnglishImpl implements SettingEnglish {
 	@Override
 	public int getRepeatToLearnedPresentExampleVerbNumber() {
 		return settingEnglishJpaRepository.getRepeatToLearnedPresentExampleVerbNumber();
+	}
+
+	@Override
+	public int getRepeatToReviewVerbNumber() {
+		return settingEnglishJpaRepository.getRepeatToReviewVerbNumber();
 	}
 
 }

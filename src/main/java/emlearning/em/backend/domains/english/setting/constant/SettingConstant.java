@@ -8,5 +8,6 @@ public final class SettingConstant {
 
 	public static final int DEFAULT_REPETTIONS_TO_LEARNED_VERB = 1;
 	public static final int DEFAULT_REPETTIONS_TO_LEARNED_PRESENT_EXAMPLE_VERB = 1;
+	public static final int DEFAULT_REPETTIONS_TO_LEARNED_REVIEW_VERB = 1;
 
 }

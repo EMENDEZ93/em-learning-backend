@@ -25,5 +25,11 @@ public class SettingEnglishController {
 	public int getRepeatToLearnedPresentExampleVerbNumber() {
 		return settingEnglish.getRepeatToLearnedPresentExampleVerbNumber();
 	}	
+
+	@GetMapping("repeat/review/present/verb/learned")
+	public int getRepeatToReviewVerbNumber() {
+		return settingEnglish.getRepeatToReviewVerbNumber();
+	}	
+	
 	
 }

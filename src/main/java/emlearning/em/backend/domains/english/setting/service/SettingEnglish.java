@@ -8,4 +8,6 @@ public interface SettingEnglish {
 
 	public int getRepeatToLearnedPresentExampleVerbNumber();
 
+	public int getRepeatToReviewVerbNumber();
+
 }

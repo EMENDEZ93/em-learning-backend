@@ -16,5 +16,7 @@ public interface SettingEnglishJpaRepository extends JpaRepository<SettingEnglis
 
 	@Query("select setting.repeatToLearnedPresentExampleVerb from SettingEnglishEntity setting where setting.id=1")
 	public int getRepeatToLearnedPresentExampleVerbNumber();
-	
+
+	@Query("select setting.repeatToReviewVerb from SettingEnglishEntity setting where setting.id=1")	
+	public int getRepeatToReviewVerbNumber();
 }
