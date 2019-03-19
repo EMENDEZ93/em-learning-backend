@@ -23,9 +23,14 @@ public class PastEntity implements Serializable {
 
 	private boolean learned;
 
+	private boolean reviewed;
+
+	private String username;
+
 	@PrePersist
 	public void prePersist() {
 		learned = false;
+		reviewed = false;
 	}
 
 	public Long getId() {
@@ -50,6 +55,22 @@ public class PastEntity implements Serializable {
 
 	public void setLearned(boolean learned) {
 		this.learned = learned;
+	}
+
+	public boolean isReviewed() {
+		return reviewed;
+	}
+
+	public void setReviewed(boolean reviewed) {
+		this.reviewed = reviewed;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 }

@@ -40,4 +40,9 @@ public class SettingEnglishImpl implements SettingEnglish {
 		return settingEnglishJpaRepository.getRepeatToReviewVerbNumber();
 	}
 
+	@Override
+	public int getRepeatToPastVerbNumber() {
+		return settingEnglishJpaRepository.getRepeatToPastVerbNumber();
+	}
+
 }

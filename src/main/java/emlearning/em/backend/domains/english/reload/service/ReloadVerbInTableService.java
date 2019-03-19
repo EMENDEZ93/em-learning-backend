@@ -16,7 +16,6 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import emlearning.em.backend.application.query.english.verb.VerbDto;
 import emlearning.em.backend.domains.english.constant.ExcelEnglishFileConstant;
 import emlearning.em.backend.domains.english.practice.example.entity.ExampleVerbEntity;
-import emlearning.em.backend.domains.english.practice.past.entity.PastEntity;
 import emlearning.em.backend.domains.english.practice.pastparticiple.entity.PastParticipleEntity;
 
 public interface ReloadVerbInTableService {
@@ -25,7 +24,7 @@ public interface ReloadVerbInTableService {
 
 	public void reloadPresentVerbInTable() throws InvalidFormatException, IOException;
 
-	public PastEntity reloadPastVerbInTable(String pastVerb) throws InvalidFormatException, IOException;
+	public void reloadPastVerbInTable() throws InvalidFormatException, IOException;
 
 	public PastParticipleEntity reloadPastParticipleVerbInTable(String pastParticipleVerb)
 			throws InvalidFormatException, IOException;

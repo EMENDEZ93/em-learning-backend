@@ -26,12 +26,15 @@ public class SettingEnglishEntity implements Serializable {
 	private int repeatToLearnedPresentExampleVerb;
 
 	private int repeatToReviewVerb;
-	
+
+	private int repeatToPastVerb;
+
 	@PrePersist
 	public void prePersist() {
 		repeatToLearnedVerb = SettingConstant.DEFAULT_REPETTIONS_TO_LEARNED_VERB;
-		repeatToLearnedPresentExampleVerb =SettingConstant.DEFAULT_REPETTIONS_TO_LEARNED_PRESENT_EXAMPLE_VERB;
+		repeatToLearnedPresentExampleVerb = SettingConstant.DEFAULT_REPETTIONS_TO_LEARNED_PRESENT_EXAMPLE_VERB;
 		repeatToReviewVerb = SettingConstant.DEFAULT_REPETTIONS_TO_LEARNED_REVIEW_VERB;
+		repeatToPastVerb = SettingConstant.DEFAULT_REPETTIONS_TO_LEARNED_PAST_VERB;
 	}
 
 	public Long getId() {
@@ -64,6 +67,14 @@ public class SettingEnglishEntity implements Serializable {
 
 	public void setRepeatToReviewVerb(int repeatToReviewVerb) {
 		this.repeatToReviewVerb = repeatToReviewVerb;
+	}
+
+	public int getRepeatToPastVerb() {
+		return repeatToPastVerb;
+	}
+
+	public void setRepeatToPastVerb(int repeatToPastVerb) {
+		this.repeatToPastVerb = repeatToPastVerb;
 	}
 
 }

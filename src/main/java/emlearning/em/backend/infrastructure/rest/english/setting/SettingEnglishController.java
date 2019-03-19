@@ -30,6 +30,10 @@ public class SettingEnglishController {
 	public int getRepeatToReviewVerbNumber() {
 		return settingEnglish.getRepeatToReviewVerbNumber();
 	}	
-	
+
+	@GetMapping("repeat/past/verb/learned")
+	public int getRepeatToPastVerbNumber() {
+		return settingEnglish.getRepeatToPastVerbNumber();
+	}
 	
 }

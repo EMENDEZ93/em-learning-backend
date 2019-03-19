@@ -39,6 +39,7 @@ public class ReloadVerbInTableImpl implements ReloadVerbInTableService {
 	@Override
 	public void reloadAllVerb() throws IOException, InvalidFormatException {
 		reloadPresentVerbInTable();
+		reloadPastVerbInTable();
 	}
 
 	@Override
@@ -74,10 +75,35 @@ public class ReloadVerbInTableImpl implements ReloadVerbInTableService {
 	}
 
 	@Override
-	public PastEntity reloadPastVerbInTable(String pastVerb) throws InvalidFormatException, IOException {
-		PastEntity newVerb = new PastEntity();
-		newVerb.setVerb(pastVerb);
-		return pastJpaRepository.save(newVerb);
+	public void reloadPastVerbInTable() throws InvalidFormatException, IOException {
+
+		userEntityRepository.findAll().forEach(user -> {
+
+			if (user.getId() != null) {
+
+				try {
+
+					getAllverbForTime(VerbConstant.presentTime).stream().forEach(verbDto -> {
+						if (!pastJpaRepository.existsByVerbAndUsername(verbDto.getPast(), user.getUsername())) {
+
+							PastEntity newVerb = new PastEntity();
+							newVerb.setUsername(user.getUsername());
+							newVerb.setVerb(verbDto.getPast());
+							pastJpaRepository.save(newVerb);
+
+						}
+					});
+
+				} catch (InvalidFormatException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+
+			}
+
+		});
+
 	}
 
 	@Override

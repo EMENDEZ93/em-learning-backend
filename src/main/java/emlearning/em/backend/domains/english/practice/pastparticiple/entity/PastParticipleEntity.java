@@ -23,9 +23,12 @@ public class PastParticipleEntity implements Serializable {
 
 	private boolean learned;
 
+	private boolean reviewed;
+
 	@PrePersist
 	public void prePersist() {
 		learned = false;
+		reviewed = false;
 	}
 
 	public Long getId() {
@@ -50,6 +53,14 @@ public class PastParticipleEntity implements Serializable {
 
 	public void setLearned(boolean learned) {
 		this.learned = learned;
+	}
+
+	public boolean isReviewed() {
+		return reviewed;
+	}
+
+	public void setReviewed(boolean reviewed) {
+		this.reviewed = reviewed;
 	}
 
 }
